@@ -1,0 +1,124 @@
+<!DOCTYPE HTML>
+<html lang="vi">
+<head>
+    <title>Learning Center - Học tập</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css\style_hoctap.css">
+
+</head>
+<body class="is-preload">
+
+<div id="floating-timer"></div>
+
+<section id="sidebar">
+    <div class="inner">
+        <nav>
+            <ul>
+                <li><a href="index.html" ><i class="fa-solid fa-house"></i> Trang chủ</a></li> 
+                <li><a href="hoctap.html" class="active"><i class="fa-solid fa-graduation-cap"></i> Học tập</a></li>
+                <li><a href="giaitri.html"><i class="fa-solid fa-ghost"></i> Giải trí</a></li>
+                <li><a href="congcu.html"><i class="fa-solid fa-screwdriver-wrench"></i> Công cụ</a></li>
+            </ul>
+        </nav>
+    </div>
+</section>
+
+<div id="wrapper">
+    <div class="inner">
+        
+        <h1 class="header-content">Trung Tâm Học Tập 🎓</h1>
+        <p class="subtitle">Kiểm tra kiến thức chuyên môn và Anh văn với các bài Quiz được thiết kế linh hoạt.</p>
+
+        <section id="tool-selector">
+            <button onclick="showTool('quiz-ai')">🤖 Quiz AI</button>
+            <button onclick="showTool('quiz-english')">🇬🇧 Quiz Anh Văn</button>
+            <button onclick="showTool('quiz-it-basic')">💻 Quiz Công nghệ số</button>
+        </section>
+        
+        <div id="content-wrapper">
+            <section id="content-area">
+                <div id="quiz-ai" class="tool-box">
+                    <h3>🤖 Quiz Trí tuệ Nhân tạo (Tổng quan AI)</h3>
+                    <div id="ai-controls" class="controls-bar">
+                        <select id="ai-num-questions">
+                            <option value="10">10 Câu</option>
+                            <option value="20">20 Câu</option>
+                            <option value="40">40 Câu</option>
+                        </select>
+                        <span id="ai-time-limit" style="color:var(--text-main); font-weight: 600;">Thời gian: 20 phút</span>
+                        <button onclick="startQuiz('ai')" class="btn-action btn-start"><i class="fa-solid fa-play"></i> Bắt đầu Quiz</button>
+                        <button onclick="resetQuiz('ai')" class="btn-action btn-reset"><i class="fa-solid fa-rotate-left"></i> Đặt lại</button>
+                    </div>
+
+                    <div id="ai-info" class="quiz-info-block">
+                        Chọn số câu hỏi và nhấn **Bắt đầu Quiz**. Tổng số câu hỏi trong ngân hàng: **${getQuizBank('ai').length} câu**. Điểm tối đa: **10 điểm**.
+                    </div>
+                    
+                    <div id="ai-quiz-content" class="quiz-container">
+                        </div>
+                    <div id="ai-result-summary" class="result-box" style="display:none;"></div>
+                </div>
+
+                <div id="quiz-english" class="tool-box" style="display:none;">
+                    <h3>🇬🇧 Quiz Anh Văn (Ngữ pháp, Từ vựng, Kiến thức Xã hội)</h3>
+                    <div id="english-controls" class="controls-bar">
+                        <select id="english-num-questions">
+                            <option value="10">10 Câu</option>
+                            <option value="20">20 Câu</option>
+                            <option value="40">40 Câu</option>
+                        </select>
+                        <span id="english-time-limit" style="color:var(--text-main); font-weight: 600;">Thời gian: 20 phút</span>
+                        <button onclick="startQuiz('english')" class="btn-action btn-start"><i class="fa-solid fa-play"></i> Bắt đầu Quiz</button>
+                        <button onclick="resetQuiz('english')" class="btn-action btn-reset"><i class="fa-solid fa-rotate-left"></i> Đặt lại</button>
+                    </div>
+                    <div id="english-info" class="quiz-info-block">
+                        Chọn số câu hỏi và nhấn **Bắt đầu Quiz**. Tổng số câu hỏi trong ngân hàng: **${getQuizBank('english').length} câu**. Điểm tối đa: **10 điểm**.
+                    </div>
+                    <div id="english-quiz-content" class="quiz-container"></div>
+                    <div id="english-result-summary" class="result-box" style="display:none;"></div>
+                </div>
+
+                <div id="quiz-it-basic" class="tool-box" style="display:none;">
+                    <h3>💻 Quiz Nền tảng Công nghệ số</h3>
+                    <div id="it-basic-controls" class="controls-bar">
+                        <select id="it-basic-num-questions">
+                            <option value="10">10 Câu</option>
+                            <option value="20">20 Câu</option>
+                            <option value="40">40 Câu</option>
+                        </select>
+                        <span id="it-basic-time-limit" style="color:var(--text-main); font-weight: 600;">Thời gian: 20 phút</span>
+                        <button onclick="startQuiz('it-basic')" class="btn-action btn-start"><i class="fa-solid fa-play"></i> Bắt đầu Quiz</button>
+                        <button onclick="resetQuiz('it-basic')" class="btn-action btn-reset"><i class="fa-solid fa-rotate-left"></i> Đặt lại</button>
+                    </div>
+                    <div id="it-basic-info" class="quiz-info-block">
+                        Chọn số câu hỏi và nhấn **Bắt đầu Quiz**. Tổng số câu hỏi trong ngân hàng: **${getQuizBank('it-basic').length} câu**. Điểm tối đa: **10 điểm**.
+                    </div>
+                    <div id="it-basic-quiz-content" class="quiz-container"></div>
+                    <div id="it-basic-result-summary" class="result-box" style="display:none;"></div>
+                </div>
+            </section>
+
+            <section id="question-status-panel">
+                <h4>Trạng thái làm bài</h4>
+                <div id="status-grid">
+                    </div>
+                <button id="ai-submit-btn" onclick="submitQuiz('ai')" class="btn-action btn-start submit-panel-btn" style="display:none;"><i class="fa-solid fa-paper-plane"></i> Nộp bài AI</button>
+                <button id="english-submit-btn" onclick="submitQuiz('english')" class="btn-action btn-start submit-panel-btn" style="display:none;"><i class="fa-solid fa-paper-plane"></i> Nộp bài Anh Văn</button>
+                <button id="it-basic-submit-btn" onclick="submitQuiz('it-basic')" class="btn-action btn-start submit-panel-btn" style="display:none;"><i class="fa-solid fa-paper-plane"></i> Nộp bài Công nghệ số</button>
+
+            </section>
+        </div>
+    </div>
+
+    <footer id="footer">
+        <p>© 2025 Nhóm 12 - Nền tảng Công nghệ số.</p>
+    </footer>
+</div>
+
+<script src="js\js_hoctap.js"></script>
+
+</body>
+</html>

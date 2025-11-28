@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+<html lang="vi">
+<head>
+    <title>Game Center - Giải trí</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css\style_giaitri.css">
+
+</head>
+<body class="is-preload">
+
+<section id="sidebar">
+    <div class="inner">
+        <nav>
+            <ul>
+                <li><a href="index.html" ><i class="fa-solid fa-house"></i> Trang chủ</a></li> 
+                <li><a href="hoctap.html"><i class="fa-solid fa-graduation-cap"></i> Học tập</a></li>
+                <li><a href="giaitri.html"class="active"><i class="fa-solid fa-ghost"></i> Giải trí</a></li>
+                <li><a href="congcu.html"><i class="fa-solid fa-screwdriver-wrench"></i> Công cụ</a></li>
+            </ul>
+        </nav>
+    </div>
+</section>
+
+    <div id="wrapper">
+        <div class="inner">
+            
+            <h1>Trung Tâm Giải Trí 🎮</h1>
+            <p class="subtitle">Thư giãn sau những giờ học căng thẳng với các mini-game thú vị.</p>
+
+            <section id="game-selector" style="font-size: 40px;">
+                <!-- <button onclick="showGame('taixiu')">🎲 Gieo xúc s</button> -->
+                <button onclick="showGame('cardmatch')">🂠 Lật Bài</button>
+                <button onclick="showGame('guessnum')">🔢 Đoán Số</button>
+            </section>
+
+            <section id="game-area">
+                
+                <div id="cardmatch" class="game-box">
+                    <h3>🂠 Luyện trí nhớ: Tìm cặp giống nhau</h3>
+                    <p style="color:var(--text-light); margin-bottom: 20px;">
+                        Luật chơi: Lật 2 lá bài giống nhau để ghi điểm. Cố gắng hoàn thành nhanh nhất có thể!
+                    </p>
+                    
+                    <div style="margin-bottom:20px;  display:flex; align-items:center; gap: 10px;">
+                        <select style="font-size:20px;;" id="card-count">
+                            <option value="16">Dễ (16 ô)</option>
+                            <option value="20">Thường (20 ô)</option>
+                            <option value="24">Khó (24 ô)</option>
+                            <option value="32">Siêu khó (32 ô)</option>
+                        </select>
+                        <button onclick="startGame()" class="game-action xoc" style="padding: 8px 20px; margin:0; font-size:20px;">Bắt đầu</button>
+                        <button onclick="resetGame()" class="game-action tai" style="padding: 8px 20px; margin:0; font-size:20px; background:#94a3b8;">Reset</button>
+                    </div>
+
+                    <div style="margin-bottom:20px; font-weight: 500;">
+                        ⏱ Thời gian: <span id="timer" style="color:var(--primary); font-weight:700;">0</span>s 
+                        &nbsp;|&nbsp; 
+                        ❌ Sai: <span id="wrong" style="color:#ef4444; font-weight:700;">0</span>
+                    </div>
+                    
+                    <div id="finalResult" style="margin-bottom:20px; font-size:18px; font-weight:700; color:#10b981;"></div>
+
+                    <div id="cardBoard" style="display:grid; gap:10px; justify-content:center;"></div>
+                </div>
+
+                <div id="guessnum" class="game-box" style="font-size: 20px;">
+                    <h3>🔢 Thử tài đoán số bí mật</h3>
+                    <p style="color:var(--text-light); margin-bottom: 20px;">
+                        Luật chơi:  Máy tính đã chọn một số từ <strong style="color: #ef4444;">1 đến 100</strong>. Bạn hãy đoán xem đó là số mấy?
+                    </p>
+                    
+                    <div style="display: flex; gap: 10px; flex-wrap: wrap; align-items: center;">
+                        <input style="font-size:20px;" type="number" id="userGuess" placeholder="Nhập số (1-100)" min="1" max="100">
+                        <button onclick="doanSo()" class="game-action xoc" style="padding: 8px 20px; margin:0; font-size:20px;">Đoán</button>
+                        <button onclick="choiLai()" class="game-action tai" style="padding: 8px 20px; margin:0; font-size:20px; background:#94a3b8;">Reset</button>
+                        
+                    </div>
+
+                    <p id="msgGuess" style="margin-top:20px; font-size:20px; font-weight:700; min-height: 30px;"></p>
+                    <p style="color:var(--text-light)">Số lần đoán: <span id="countGuess" style="font-weight:700; color:var(--text-dark)">0</span></p>
+                </div>
+
+            </section>
+        </div>
+
+        <footer id="footer" style="margin-top: auto; padding: 20px; text-align: center; color: var(--text-light); border-top: 1px solid #e2e8f0;">
+            <p>© 2025 Nhóm 12 - Nền tảng Công nghệ số.</p>
+        </footer>
+    </div>
+    
+    <script src="js\js_giaitri.js"></script>
+
+</body>
+</html>

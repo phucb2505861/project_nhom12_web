@@ -1,0 +1,411 @@
+:root {
+    --primary: #6366f1; /* Indigo */
+    --primary-light: #818cf8;
+    --secondary: #059669; /* Emerald */
+    --secondary-light: #34d399;
+    --bg-body: #f3f4f6;
+    --bg-sidebar: #1e293b; /* Slate 800 */
+    --text-main: #334155;
+    --text-light: #94a3b8;
+    --white: #ffffff;
+    --sidebar-width: 250px;
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -2px rgb(0 0 0 / 0.05);
+    --radius: 16px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    font-family: 'Montserrat', 'Roboto', sans-serif;
+    color: var(--text-main);
+    background-color: var(--bg-body);
+    margin: 0;
+    font-size: 15px;
+    overflow-x: hidden;
+}
+
+/* --- Sidebar (GIỮ NGUYÊN) --- */
+#sidebar {
+    position: fixed; top: 0; left: 0;
+    width: var(--sidebar-width); height: 100vh;
+    background: var(--bg-sidebar);
+    padding: 20px;
+    z-index: 1000;
+}
+.logo { color: var(--white); font-size: 22px; font-weight: 700; margin-bottom: 40px; display: flex; align-items: center; gap: 10px; padding-left: 10px; }
+.logo i { color: var(--primary-light); }
+#sidebar nav ul { list-style: none; padding: 0; margin: 0; }
+#sidebar nav ul li { margin-bottom: 5px; }
+#sidebar nav ul li a { display: flex; align-items: center; gap: 12px; color: var(--text-light); padding: 12px 15px; border-radius: 12px; text-decoration: none; font-weight: 500; transition: all 0.2s ease; }
+#sidebar nav ul li a:hover { background: rgba(255,255,255,0.05); color: var(--white); }
+#sidebar nav ul li a.active { background: var(--primary); color: var(--white); box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4); }
+
+/* --- Main Content & Sticky Footer Fix --- */
+#wrapper {
+    margin-left: var(--sidebar-width) !important;
+    min-height: 100vh;
+    display: flex; 
+    flex-direction: column; 
+    padding: 40px 60px 0; 
+}
+
+.inner {
+    flex-grow: 1; 
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-bottom: 40px; 
+}
+
+#footer {
+    width: 100%;
+    padding: 20px 60px;
+    text-align: center;
+    color: var(--text-light);
+    font-size: 13px;
+    background-color: var(--bg-body);
+    border-top: 1px solid #e2e8f0;
+    flex-shrink: 0; 
+}
+body {
+font-family: 'Montserrat', sans-serif;
+color: var(--text-main);
+background-color: var(--bg-body);
+margin: 0;
+font-size: 15px;
+overflow-x: hidden;
+
+/* === BƯỚC 1: Đảm bảo Body chiếm toàn bộ chiều cao và là Flex Container === */
+min-height: 100vh; 
+display: flex;
+}
+
+/* 2. Thay đổi #wrapper: Chiếm hết không gian còn lại (Sau Sidebar) và là Flex Column */
+#wrapper {
+margin-left: var(--sidebar-width) !important;
+padding: 40px 60px;
+margin-top: 0 !important;
+
+flex-grow: 1; /* Lấp đầy không gian còn lại bên phải Sidebar */
+display: flex;
+flex-direction: column; /* Xếp nội dung và footer theo cột */
+min-height: auto; /* Cần thiết khi dùng flex-grow */
+}
+
+/* 3. Thay đổi Section nội dung chính: Cho phép co giãn để đẩy Footer xuống */
+.wrapper.style1 {
+flex-grow: 1; /* === BƯỚC 3: Phần nội dung chính co giãn để đẩy Footer xuống === */
+}
+
+/* Giữ nguyên Footer, đã có flex-shrink: 0; */
+#footer {
+width: 100%;
+padding: 20px 60px;
+text-align: center;
+color: var(--text-light);
+font-size: 13px;
+background-color: var(--bg-body);
+border-top: 1px solid #e2e8f0;
+flex-shrink: 0; 
+}
+/* --- Tool Selector/Header/Quiz Content styles (Giữ nguyên) --- */
+.header-content h1 { font-size: 28px; margin: 0 0 5px 0; color: #1e293b; }
+.header-content p { color: #64748b; margin-top: 0; }
+#tool-selector {
+    display: flex; gap: 15px; margin-bottom: 30px; margin-top: 20px;
+    background: #fff; padding: 6px; border-radius: 14px;
+    width: fit-content;
+    box-shadow: var(--shadow-sm);
+}
+#tool-selector button {
+    border: none; background: transparent;
+    padding: 10px 24px; border-radius: 10px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600; color: #64748b;
+    cursor: pointer; transition: all 0.3s ease;
+    font-size: 18px;
+}
+#tool-selector button:hover { color: var(--primary); background: #f0fdfa; } 
+/* Màu hover mới là màu xanh Mint/Teal nhạt (#f0fdfa) - giống Game Selector */
+
+#tool-selector button.active {
+background: var(--primary); color: #fff;
+box-shadow: 0 4px 10px rgba(99, 102, 241, 0.3);
+}
+
+/* --- Content Area Layout (ĐÃ SỬA LỀ PHẢI) --- */
+#content-wrapper { 
+    display: flex; 
+    gap: 40px; /* Tăng khoảng cách giữa khung làm bài và khung trạng thái */
+}
+#content-area {
+    flex-grow: 1;
+    background: var(--white);
+    border-radius: 24px;
+    padding: 40px;
+    box-shadow: var(--shadow-lg);
+    min-height: 500px;
+    position: relative;
+    flex-basis: 68%; 
+    max-width: calc(100% - 290px); 
+}
+
+/* --- Question Status Panel (ĐÃ SỬA LỀ TRÁI VÀ KÍCH THƯỚC) --- */
+/* --- Question Status Panel (Cải tiến thiết kế) --- */
+#question-status-panel {
+    width: 280px; /* Tăng chiều rộng nhẹ */
+    flex-shrink: 0;
+    /* Thay đổi màu nền nhẹ nhàng hơn, ví dụ: white */
+    background: var(--white); 
+    border-radius: 16px; 
+    padding: 25px; /* Tăng padding */
+    /* Dùng box-shadow lớn hơn (lg) để làm nổi bật */
+    box-shadow: var(--shadow-lg); 
+    display: none; 
+    position: sticky; 
+    top: 40px; /* Điều chỉnh vị trí dính */
+    height: fit-content;
+    border: 1px solid #e0e7ff; /* Thêm viền màu Indigo nhạt */
+}
+
+#question-status-panel h4 { 
+    font-size: 19px; 
+    font-weight: 700;
+    color: var(--secondary); /* Sử dụng màu nhấn (Emerald) */ 
+    margin-top: 0; 
+    margin-bottom: 20px; 
+    padding-bottom: 15px; 
+    /* Thêm đường gạch chân mỏng và nổi bật hơn */
+    border-bottom: 2px solid var(--secondary-light); 
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Thêm style cho icon trong h4 (cần cập nhật HTML) */
+#question-status-panel h4 i {
+    color: var(--secondary);
+}
+
+/* Cải thiện các ô trạng thái (Status Item) */
+.status-item {
+    width: 45px; /* Tăng kích thước ô */
+    height: 45px;
+    border-radius: 8px;
+    border: 2px solid #e0e7ff; /* Viền mỏng màu nhạt */
+    background: #f8fafc; 
+    transition: all 0.2s;
+    font-size: 16px;
+}
+
+.status-item.done {
+    /* Giữ nguyên màu đã làm, hoặc dùng màu primary mạnh mẽ hơn */
+    background: var(--primary); 
+    color: var(--white);
+    border-color: var(--primary);
+}
+.status-item.current {
+    /* Màu nổi bật hơn cho câu hiện tại */
+    background: #ffedd5; /* Màu Cam nhạt */
+    color: var(--text-main);
+    border: 2px solid #f97316; /* Viền Cam đậm */
+    transform: scale(1.1);
+}
+#status-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-bottom: 20px; } /* Thêm margin bottom */
+.status-item {
+    display: flex; align-items: center; justify-content: center;
+    width: 40px; height: 40px; border-radius: 8px; border: 1px solid #cbd5e1;
+    cursor: pointer; font-weight: 600; transition: all 0.2s;
+    background: #f8fafc; color: var(--text-main);
+    font-size: 18px; 
+    font-weight: 700;
+}
+.status-item.done { background: var(--primary-light); color: var(--white); border-color: var(--primary); }
+.status-item.current { background: var(--primary); color: var(--white); border: 2px solid var(--secondary); transform: scale(1.1); }
+
+/* --- NÚT NỘP BÀI DƯỚI KHUNG TRẠNG THÁI (MỚI) --- */
+.submit-panel-btn {
+    width: 100%;
+    margin-top: 10px; 
+    /* Kế thừa style của btn-start */
+}
+
+
+/* --- Floating Timer (Giữ nguyên) --- */
+#floating-timer {
+    position: fixed; top: 20px; right: 20px;
+    background: var(--primary); color: var(--white);
+    padding: 10px 15px; border-radius: 12px; font-size: 18px;
+    font-weight: 700; box-shadow: var(--shadow-lg); z-index: 100;
+    display: none; transition: background 0.3s;
+}
+.timer-warning { background: #ef4444 !important; }
+
+/* --- Quiz Content Style (Giữ nguyên) --- */
+.tool-box h3 {
+    font-size: 24px; color: var(--secondary); border-left: 4px solid var(--secondary-light);
+    padding-left: 12px; margin-top: 0; margin-bottom: 25px; font-weight: 700;
+}
+.quiz-question-box {
+    background: #f0fdfa; padding: 25px; border-radius: 16px; box-shadow: var(--shadow-sm);
+    margin-bottom: 25px; border-left: 5px solid var(--secondary); scroll-margin-top: 20px; 
+    font-size: 17px; 
+    line-height: 1.6;
+}
+
+/* --- Nút bấm (Giữ nguyên) --- */
+.btn-action {
+    padding: 10px 20px; border-radius: 10px; font-weight: 600;
+    cursor: pointer; border: none; transition: all 0.3s ease;
+    font-family: 'Montserrat', sans-serif;
+    display: flex; align-items: center; gap: 8px;
+    justify-content: center; /* căn giữa nội dung nút */
+}
+.btn-start {
+    background: var(--secondary);
+    color: var(--white);
+    box-shadow: 0 4px 10px rgba(5, 150, 105, 0.4);
+}
+.btn-start:hover {
+    background: #047857;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 15px rgba(5, 150, 105, 0.5);
+}
+.btn-reset {
+    background: #e2e8f0;
+    color: var(--text-main);
+    border: 1px solid #cbd5e1;
+}
+.btn-reset:hover {
+    background: #cbd5e1;
+    transform: translateY(-1px);
+}
+
+/* ===== FORMAT PHẦN ĐÁP ÁN (Giữ nguyên) ===== */
+.answer-option {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.answer-option input[type="radio"] {
+    margin-right: 12px;
+    flex-shrink: 0;
+    cursor: pointer;
+    transform: scale(1.2);
+}
+
+.answer-option label {
+    flex-grow: 1;
+    padding: 10px 0;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex; 
+    align-items: center;
+    justify-content: space-between; 
+}
+
+/* Highlight đáp án đúng */
+.quiz-question-box.correct-answer .answer-option.correct-answer label {
+    color: var(--secondary);
+    font-weight: 700;
+}
+
+/* Highlight lựa chọn sai */
+.quiz-question-box.wrong-choice .answer-option.wrong-answer label {
+    color: #ef4444; /* Red 500 */
+    font-weight: 700;
+}
+
+.correct-mark {
+    color: var(--secondary);
+    font-size: 14px;
+    font-weight: 700;
+    margin-left: 10px;
+}
+.wrong-mark {
+    color: #ef4444; 
+    font-size: 14px;
+    font-weight: 700;
+    margin-left: 10px;
+}
+
+/* Kết quả tổng hợp */
+.result-box {
+    background: #fffbe6; /* Light Yellow */
+    border: 2px solid #f59e0b; /* Amber */
+    border-radius: 16px;
+    padding: 30px;
+    text-align: center;
+    margin-top: 20px;
+}
+.result-box h4 {
+    color: #f59e0b;
+    font-size: 26px;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+.result-score {
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--secondary);
+    margin-bottom: 20px;
+}
+.result-details p {
+    font-size: 16px;
+    margin: 5px 0;
+    color: var(--text-main);
+}
+
+/* ===== KHUNG CHỌN SỐ LƯỢNG CÂU (Giữ nguyên) ===== */
+.controls-bar {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: #f8fafc;
+    padding: 12px 16px;
+    border-radius: 14px;
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 20px;
+}
+
+.controls-bar select {
+    padding: 8px 14px;
+    border-radius: 10px;
+    border: 1px solid #cbd5e1;
+    font-size: 15px;
+    font-weight: 600;
+    background: #fff;
+    cursor: pointer;
+}
+.controls-bar select:hover {
+    border-color: var(--primary);
+}
+
+.controls-bar button {
+    height: 42px;
+}
+.status-item.correct {
+    background-color: #4CAF50; /* xanh */
+    color: white;
+}
+
+.status-item.wrong {
+    background-color: #F44336; /* đỏ */
+    color: white;
+}
+.status-item.correct {
+    background-color: #4CAF50; /* xanh */
+    color: white;
+}
+
+.status-item.wrong {
+    background-color: #F44336; /* đỏ */
+    color: white;
+}
+
+.status-item.unanswered {
+    background-color: #9E9E9E; /* xám */
+    color: white;
+}

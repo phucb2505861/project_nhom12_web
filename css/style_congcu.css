@@ -1,0 +1,374 @@
+:root {
+        --primary: #6366f1; /* Indigo */
+        --primary-light: #818cf8;
+        --secondary: #ec4899; /* Pink */
+        --bg-body: #f3f4f6;
+        --bg-sidebar: #1e293b; /* Slate 800 */
+        --text-main: #334155;
+        --text-light: #94a3b8;
+        --white: #ffffff;
+        --sidebar-width: 250px;
+        --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+        --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -2px rgb(0 0 0 / 0.05);
+        --radius: 16px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+        font-family: 'Montserrat', sans-serif;;
+        color: var(--text-main);
+        background-color: var(--bg-body);
+        margin: 0;
+        font-size: 15px;
+        overflow-x: hidden;
+    }
+
+    /* --- Sidebar --- */
+    #sidebar {
+        position: fixed; top: 0; left: 0;
+        width: var(--sidebar-width); height: 100vh;
+        background: var(--bg-sidebar);
+        padding: 20px;
+        z-index: 1000;
+        transition: transform 0.3s ease;
+    }
+    
+    .logo {
+        color: var(--white);
+        font-size: 22px;
+        font-weight: 700;
+        margin-bottom: 40px;
+        display: flex; align-items: center; gap: 10px;
+        padding-left: 10px;
+    }
+    .logo i { color: var(--primary-light); }
+
+    #sidebar nav ul { list-style: none; padding: 0; margin: 0; }
+    #sidebar nav ul li { margin-bottom: 5px; }
+    
+    #sidebar nav ul li a {
+        display: flex; align-items: center; gap: 12px;
+        color: var(--text-light);
+        padding: 12px 15px;
+        border-radius: 12px;
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.2s ease;
+    }
+    
+    #sidebar nav ul li a:hover {
+        background: rgba(255,255,255,0.05);
+        color: var(--white);
+    }
+    
+    #sidebar nav ul li a.active {
+        background: var(--primary);
+        color: var(--white);
+        box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+    }
+    #footer {
+        width: 100%;
+        padding: 20px 60px;
+        text-align: center;
+        color: var(--text-light);
+        font-size: 13px;
+        background-color: var(--bg-body);
+        border-top: 1px solid #e2e8f0;
+        flex-shrink: 0; 
+    }
+
+    /* =====================
+    KHUNG BAO NỘI DUNG 
+    ===================== */
+    #wrapper {
+        margin-left: var(--sidebar-width) !important;
+        padding: 40px 60px;
+        margin-top: 0 !important;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+    body {
+font-family: 'Montserrat', sans-serif;
+color: var(--text-main);
+background-color: var(--bg-body);
+margin: 0;
+font-size: 15px;
+overflow-x: hidden;
+
+/* === BƯỚC 1: Đảm bảo Body chiếm toàn bộ chiều cao và là Flex Container === */
+min-height: 100vh; 
+display: flex;
+}
+
+/* 2. Thay đổi #wrapper: Chiếm hết không gian còn lại (Sau Sidebar) và là Flex Column */
+#wrapper {
+margin-left: var(--sidebar-width) !important;
+padding: 40px 60px;
+margin-top: 0 !important;
+
+flex-grow: 1; /* Lấp đầy không gian còn lại bên phải Sidebar */
+display: flex;
+flex-direction: column; /* Xếp nội dung và footer theo cột */
+min-height: auto; /* Cần thiết khi dùng flex-grow */
+}
+
+/* 3. Thay đổi Section nội dung chính: Cho phép co giãn để đẩy Footer xuống */
+.wrapper.style1 {
+flex-grow: 1; /* === BƯỚC 3: Phần nội dung chính co giãn để đẩy Footer xuống === */
+}
+
+/* Giữ nguyên Footer, đã có flex-shrink: 0; */
+#footer {
+width: 100%;
+padding: 20px 60px;
+text-align: center;
+color: var(--text-light);
+font-size: 13px;
+background-color: var(--bg-body);
+border-top: 1px solid #e2e8f0;
+flex-shrink: 0; 
+}
+    .inner {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+        .game-box {
+            display: none; 
+            flex-direction: column; 
+            align-items: center; 
+            width: 100%;
+        }
+        #calculator {
+            display: none; 
+        }
+        #vongquay {
+            display: none; 
+        }
+
+        #game-selector {
+            display: flex; gap: 15px; margin-bottom: 30px; margin-top: 20px;
+            background: #fff; padding: 6px; border-radius: 14px;
+            width: fit-content;
+            box-shadow: var(--shadow-sm);
+        }
+    
+    #game-selector button {
+        border: none; background: transparent;
+        padding: 10px 24px; border-radius: 10px;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 600; color: #64748b;
+        cursor: pointer; transition: all 0.3s ease;
+        font-size: 18px;
+    }
+    
+    #game-selector button:hover { color: var(--primary); background: #f0fdfa; }
+    
+    #game-selector button.active {
+        background: var(--primary); color: #fff;
+        box-shadow: 0 4px 10px rgba(99, 102, 241, 0.3);
+    }
+
+/* =========================
+MÁY TÍNH 
+========================= */
+.calculator-title {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.machine {
+    /* Đảm bảo máy tính nằm giữa */
+    display: flex;
+    justify-content: center; 
+    width: 100%;
+}
+
+/* Vỏ máy nhỏ gọn */
+.calc-shell {
+    width: 450px; 
+    background: #f0f4f8;
+    padding: 20px; 
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15), inset 0 0 0 2px rgba(255,255,255,0.5);
+}
+
+/* Màn hình */
+.screen {
+    background: #1e293b;
+    padding: 15px;
+    border-radius: 12px;
+    min-height: 90px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: inset 0 4px 10px rgba(0,0,0,0.3);
+    margin-bottom: 15px;
+}
+
+.expr { font-size: 1rem; color: #94a3b8; text-align: right; min-height: 1.5rem; }
+.result { font-size: 2.2rem; color: #f8fafc; font-weight: 700; text-align: right; margin-top: 5px; }
+
+/* Khu vực Controls */
+.controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    padding: 0 2px;
+}
+
+/* Nút Mode nhỏ */
+.toggle {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 10px;
+    background: #cbd5e1;
+    border-radius: 6px;
+    color: #334155;
+    font-size: 0.8rem;
+    font-weight: 700;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+.toggle select { border: none; background: transparent; color: #0f172a; font-weight: 700; cursor: pointer; outline: none; font-size: 0.8rem; }
+
+/* NÚT CE và AC (ĐÃ KÉO DÀI) */
+.btn-action-group {
+    display: flex;
+    gap: 8px;
+}
+
+.btn-clear {
+    min-width: 80px; 
+    padding: 6px 0; 
+    font-size: 13px;
+    font-weight: 800;
+    border-radius: 6px;
+    cursor: pointer;
+    border: none;
+    color: white;
+    transition: transform 0.1s, box-shadow 0.1s;
+    box-shadow: 0 3px 0 rgba(0,0,0,0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.btn-clear:active {
+    transform: translateY(3px);
+    box-shadow: 0 0px 0 rgba(0,0,0,0.2);
+}
+
+#clearEntry { background: #f59e0b; box-shadow: 0 3px 0 #b45309; }
+#allClear { background: #ef4444; box-shadow: 0 3px 0 #b91c1c; }
+
+/* Bàn phím Grid */
+.keypad-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    padding: 0 2px;
+}
+
+/* Style chung cho nút bấm */
+.btn {
+    padding: 12px 0; 
+    font-size: 1.1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    text-align: center;
+    transition: all 0.1s;
+    box-shadow: 0 3px 0 rgba(0,0,0,0.15);
+    user-select: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn:active {
+    transform: translateY(3px);
+    box-shadow: 0 0px 0 rgba(0,0,0,0.15);
+}
+
+.btn.num { background: #ffffff; color: #1e293b; font-weight: 700; }
+.btn.num:hover { background: #f1f5f9; }
+
+.btn.func { background: #e2e8f0; color: #334155; font-size: 0.95rem; }
+.btn.func:hover { background: #cbd5e1; }
+
+.btn.op { background: #dbeafe; color: #2563eb; font-weight: 700; font-size: 1.3rem; }
+.btn.op:hover { background: #bfdbfe; }
+
+.btn.accent { background: #3b82f6; color: #fff; box-shadow: 0 3px 0 #1d4ed8; }
+.btn.accent:hover { background: #2563eb; }
+
+.meta { margin-top: 15px; text-align: center; color: #64748b; font-size: 0.8rem; }
+
+@media (max-width: 600px) {
+    .calc-shell { width: 100%; padding: 15px; }
+    .keypad-grid { gap: 6px; }
+    .btn { padding: 10px 0; font-size: 1rem; }
+}
+
+/* =========================
+VÒNG QUAY MAY MẮN
+========================= */
+.card{
+    width:760px; 
+    max-width: 100%;
+    background:linear-gradient(180deg,#071726,#0b1220); 
+    border-radius:12px; 
+    padding:18px; 
+    box-shadow:0 8px 30px rgba(0,0,0,0.6);
+    margin: 0 auto; 
+    color: #f8fafc;
+}
+canvas{display:block; margin:10px auto; background:transparent; font-size: 30px;}
+.card .controls{
+    display:flex;
+    gap:8px;
+    justify-content:center;
+    align-items:center;
+    flex-wrap:wrap;
+    margin-bottom: 0;
+}
+.card input[type=text]{
+    padding:8px;
+    border-radius:8px;
+    border:1px solid rgba(255,255,255,0.06);
+    background:rgba(255,255,255,0.02);
+    color:inherit;
+    flex-grow: 1; 
+    min-width: 180px;
+}
+.card button{
+    padding:8px 12px;
+    border-radius:8px;
+    border:none;
+    cursor:pointer;
+    background:#ffb020;
+    color:#071726;
+    font-weight:700
+}
+.list{margin-top:12px}
+.item{background:rgba(255,255,255,0.03);padding:8px;border-radius:8px;margin-bottom:6px; overflow: hidden;}
+.item button {
+    background:#ff7a7a !important;
+    border:none;
+    border-radius:6px;
+    padding:4px 8px;
+    cursor:pointer;
+    font-weight: 500 !important;
+    color: white !important;
+    line-height: 1; 
+}
+#result-vongquay {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 30px;  /* to hơn */
+    color: #fffa90;   /* vàng sáng hơn */
+    font-weight: 800;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3); /* mờ, không quá đậm */
+}
